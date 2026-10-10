@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>服务导航</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f2f5;
+        }
+        .box {
+            background: #fff;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            margin: 0 0 28px;
+            font-size: 22px;
+            color: #333;
+            font-weight: 600;
+        }
+        a {
+            display: block;
+            margin: 14px 0;
+            padding: 14px 28px;
+            background: #1677ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background .2s;
+        }
+        a:hover { background: #0e5fd8; }
+        a:active { transform: scale(.98); }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>服务导航</h1>
+        <a id="astrbot-link" href="#" target="_blank" rel="noopener noreferrer">AstrBot 管理面板</a>
+        <a id="napcat-link"  href="#" target="_blank" rel="noopener noreferrer">NapCat 管理面板</a>
+    </div>
+    <script>
+        const ASTRBOT_PORT = 7826;
+        const NAPCAT_PORT  = 7827;
+
+        const host = window.location.hostname;
+        document.getElementById('astrbot-link').href = `http://${host}:${ASTRBOT_PORT}/`;
+        document.getElementById('napcat-link').href  = `http://${host}:${NAPCAT_PORT}/`;
+    </script>
+</body>
+</html>

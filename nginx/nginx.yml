@@ -1,0 +1,22 @@
+name: work
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "7825:80"
+      - "7826:7824"
+      - "7827:7823"
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ngconf:/etc/nginx
+    networks:
+      - as
+networks:
+  as:
+    external:
+      name: astrbot_network
+volumes:
+  ngconf:
+    name: ngconf

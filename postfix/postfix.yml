@@ -1,0 +1,35 @@
+services:
+  postfix:
+    image: boky/postfix:4.4.0
+    container_name: postfix
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 180M
+        reservations:
+          memory: 100M
+    environment:
+      - HOSTNAME=${POSTFIX_HOSTNAME}
+      - RELAYHOST=${RELAYHOST}
+      - RELAYHOST_USERNAME=${RELAYHOST_USERNAME}
+      - RELAYHOST_PASSWORD=${RELAYHOST_PASSWORD}
+      - ALLOWED_SENDER_DOMAINS=${ALLOWED_SENDER_DOMAINS}
+      - POSTFIX_mynetworks=${MYNETWORKS}
+      - POSTFIX_smtp_tls_security_level=${TLS_SECURITY_LEVEL}
+      - POSTFIX_message_size_limit=${MESSAGE_SIZE_LIMIT}
+      - POSTFIX_smtpd_recipient_restrictions=permit_mynetworks,reject_unauth_destination
+    volumes:
+      - postfix_spool:/var/spool/postfix
+    networks:
+      - astrbot_network
+    expose:
+      - "25"
+
+volumes:
+  postfix_spool:
+
+networks:
+  astrbot_network:
+    external: true
