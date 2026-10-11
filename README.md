@@ -18,7 +18,7 @@ astrbot-deploy/
 ├── ops/
 │   ├── logs/                   # 日志目录
 │   ├── service/                # systemd 服务单元
-│   ├── as_na_password.sh       # 查看 NapCat Token / AstrBot 账号密码
+│   ├── as_na_password.sh       # 查看 NapCat Token / AstrBot 初始账号密码
 │   ├── astr_use.sh             # AstrBot 资源监控脚本
 │   ├── email.sh                # 邮件发送封装脚本
 │   ├── init_astr_nap.sh        # 初始化邮箱配置脚本
