@@ -1,34 +1,33 @@
-```markdown
 # AstrBot 部署配置
 基于 2 核 2G 阿里云服务器的 AstrBot 推荐部署配置
 
 本项目提供一套 Docker Compose 编排方案，用于在阿里云 2 核 2G 服务器上部署 AstrBot + NapCat QQ 机器人，包含 Nginx 反向代理、Postfix 邮件服务，以及 AstrBot 资源监控和 NapCat 断联邮件告警功能。
 
 ## 项目结构
-```
-astrbot-deploy/
-├── astrbot/
-│   ├── astrbot.yml            # AstrBot + NapCat 容器编排
-│   └── as_na_password.txt     # AstrBot + NapCat 初始用户名、密码、Token存储
-├── nginx/
-│   ├── html/                   # Nginx 主页面
-│   ├── astrbot.conf            # Nginx 节点跳转配置
-│   ├── cd_volunes.sh           # 配置更改脚本
-│   └── nginx.yml               # Nginx 容器编排
-├── ops/
-│   ├── logs/                   # 日志目录
-│   ├── service/                # systemd 服务单元文件目录
-│   ├── as_na_password.sh       # 查看 NapCat Token / AstrBot 初始账号密码
-│   ├── astr_use.sh             # AstrBot 资源监控脚本
-│   ├── email.sh                # 邮件发送封装脚本
-│   ├── init_astr_nap.sh        # 初始化邮箱配置脚本
-│   ├── napcat_connect.sh       # NapCat 断联检测与告警脚本
-│   └── re_service.sh           # 注册 systemd 服务单元脚本
-├── postfix/
-│   ├── .env                    # Postfix 环境变量配置
-│   ├── postfix.yml             # Postfix 容器编排
-│   └── postfix_init.sh         # Postfix 初始化 .env 脚本
-└── README.md
+```markdow
+astrbot-deploy/  
+├── astrbot/  
+│   ├── astrbot.yml            # AstrBot + NapCat 容器编排  
+│   └── as_na_passwork.txt     # AstrBot + NapCat 初始用户名、密码、Token存储  
+├── nginx/    
+│   ├── html/                   # Nginx 主页面  
+│   ├── astrbot.conf            # Nginx 节点跳转配置  
+│   ├── cd_volunes.sh           # 配置更改脚本  
+│   └── nginx.yml               # Nginx 容器编排  
+├── ops/  
+│   ├── logs/                   # 日志目录  
+│   ├── service/                # systemd 服务单元文件目录  
+│   ├── as_na_password.sh       # 查看 NapCat Token / AstrBot 初始账号密码  
+│   ├── astr_use.sh             # AstrBot 资源监控脚本  
+│   ├── email.sh                # 邮件发送封装脚本  
+│   ├── init_astr_nap.sh        # 初始化邮箱配置脚本  
+│   ├── napcat_connect.sh       # NapCat 断联检测与告警脚本  
+│   └── re_service.sh           # 注册 systemd 服务单元脚本  
+├── postfix/  
+│   ├── .env                    # Postfix 环境变量配置  
+│   ├── postfix.yml             # Postfix 容器编排  
+│   └── postfix_init.sh         # Postfix 初始化 .env 脚本  
+└── README.md  
 ```
 
 ## 前情提要
@@ -123,5 +122,3 @@ systemctl status astrbot-monitor
 journalctl -u astrbot-monitor -f
 ```
 访问 Nginx 地址，验证 AstrBot Web 面板是否正常打开；触发一次测试邮件，确认告警通道可用。
-```
-
